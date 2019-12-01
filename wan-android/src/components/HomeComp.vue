@@ -91,7 +91,6 @@
              * 获取首页List
              */
             getHomeList() {
-                this.refreshing = false;
                 this.$http.get("/article/list/" + this.homePageIndex + "/json")
                     .then(res => res.data)
                     .then(res => {
@@ -105,7 +104,7 @@
                         } else {
                             this.finished = false;
                         }
-
+                        this.refreshing = false;
                     })
             },
 
