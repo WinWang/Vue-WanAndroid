@@ -70,6 +70,7 @@
         font-size: 16px;
         color: #000;
         margin-left: 20px;
+        font-weight: 600;
     }
 
     .tree-child-wrap {
