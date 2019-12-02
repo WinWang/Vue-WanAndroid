@@ -34,9 +34,9 @@ const routes = [
                 component: () => import('../components/ProjectComp.vue')
             },
             {
-                name: 'Mine',
-                path: '/Mine',
-                component: () => import('../components/MineComp.vue')
+                name: 'Site',
+                path: '/Site',
+                component: () => import('../components/SiteComp.vue')
             }
 
         ]

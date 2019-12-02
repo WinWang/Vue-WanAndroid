@@ -28,7 +28,7 @@
         <div class="tab-item-wrap" @click="changeTab(5)">
             <img class="bottom-tab-img"
                  :src="tabIndex==5?imgList[9]:imgList[8]"/>
-            <div :class="['txt-nor',tabIndex==5?'txt-sel':'']">我的</div>
+            <div :class="['txt-nor',tabIndex==5?'txt-sel':'']">导航</div>
         </div>
 
     </div>
@@ -105,7 +105,7 @@
 
                     case 5:
                         this.$router.push({
-                            path: '/Mine'
+                            path: '/Site'
                         })
                         break
                 }

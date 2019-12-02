@@ -50,8 +50,7 @@
              * 获取Tree列表
              */
             getTreeList() {
-                this.$http.get("/tree/json")
-                    .then(res => res.data)
+                this.$api.getSystem()
                     .then(res => {
                         this.dataList = res.data;
                     })

@@ -14,12 +14,18 @@
             </div>
             <bottom-tab class="bottom-bar"></bottom-tab>
         </div>
-
+        <van-popup
+                get-container="#app"
+                v-model="showPop"
+                position="left"
+                :style="{ width: '70%' ,height:'100%'}"
+        />
     </div>
 </template>
 
 <script>
     import BottomTab from '../components/BottomTab'
+    import {Popup} from 'vant';
     // import HomeComp from '../components/HomeComp';
     // import SystemComp from '../components/SystemComp'
     // import WeChatComp from '../components/WeChatComp'
@@ -30,6 +36,7 @@
         name: 'mainview',
         components: {
             BottomTab,
+            [Popup.name]: Popup
             // HomeComp,
             // SystemComp,
             // WeChatComp,
@@ -39,7 +46,9 @@
         },
 
         data() {
-            return {}
+            return {
+                showPop:true
+            }
         },
 
         mounted() {

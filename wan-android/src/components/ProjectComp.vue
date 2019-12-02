@@ -1,6 +1,5 @@
 <template>
     <div class="vertical-layout">
-
         <template v-for="(item,index) in dataList">
             <div>
                 <van-row type="flex" justify="space-between">

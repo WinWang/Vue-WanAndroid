@@ -80,16 +80,13 @@
              * 获取首页banner
              */
             getBanner() {
-                this.refreshing = false;
-                this.$http.get("/banner/json")
-                    .then(res => res.data)
+                this.$api.getBanner()
                     .then(res => {
                         this.bannerList = res.data;
                     })
-
-
-                this.$api.getBanner()
-                    .then()
+                    .then(() => {
+                        this.refreshing = false;
+                    })
 
             },
 
@@ -97,8 +94,7 @@
              * 获取首页List
              */
             getHomeList() {
-                this.$http.get("/article/list/" + this.homePageIndex + "/json")
-                    .then(res => res.data)
+                this.$api.getHomeList(this.homePageIndex)
                     .then(res => {
                         if (this.homePageIndex == 1) {
                             this.homeList = res.data.datas;
@@ -110,6 +106,8 @@
                         } else {
                             this.finished = false;
                         }
+                    })
+                    .then(() => {
                         this.refreshing = false;
                     })
             },
@@ -135,7 +133,7 @@
 
             toDetail() {
                 this.$router.push({
-                    path:"/about"
+                    path: "/about"
                 })
             }
 

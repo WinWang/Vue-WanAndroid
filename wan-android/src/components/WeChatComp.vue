@@ -1,11 +1,12 @@
 <template>
     <div class="vertical-layout">
-        <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333">
+        <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
+                  swipeable v-model="tabActive" @change="changeTab" :ellipsis=isEllipsis>
             <van-tab v-for="(tab,index) in wechatTab" :title="tab.name" :key="index">
             </van-tab>
 
             <van-list
-                    v-model="refreshing"
+                    v-model="loading"
                     :finished="finished"
                     finished-text="没有更多了"
                     @load="onLoad"
@@ -13,6 +14,7 @@
                 <div>
                     <template v-for="(item,index) in chatList">
                         <div>
+                            <div style="height: 20px" v-if="index==0"></div>
                             <van-row type="flex" justify="space-between">
                                 <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
                                 <div class="list-data">{{item.niceShareDate}}</div>
@@ -55,8 +57,8 @@
                 tabActive: 0,
                 isEllipsis: false,
                 chatList: [],
-                refreshing: false,
-                finished: true,
+                loading: false,
+                finished: false,
                 pageIndex: 1, //公众号请求页码
                 courseId: '', //公众号ID
                 likeNor: likeNorUrl,
@@ -74,12 +76,11 @@
              * 获取Tree列表
              */
             getWeChatTab() {
-                this.$http.get("/wxarticle/chapters/json")
-                    .then(res => res.data)
+                this.$api.getWeChatTab()
                     .then(res => {
                         this.wechatTab = res.data;
                         this.tabActive = 0;
-                        this.courseId = this.wechatTab[0].parentChapterId;
+                        this.courseId = this.wechatTab[0].id;
                         this.pageIndex = 1;
                         this.getWeChatHistory();
                     })
@@ -87,11 +88,26 @@
 
 
             getWeChatHistory() {
-                var url = "/wxarticle/list/" + this.courseId + "/" + this.pageIndex + "/json"
-                this.$http.get(url)
-                    .then(res => res.data)
+                this.$api.getChatHistory(this.courseId, this.pageIndex)
                     .then(res => {
-                        this.chatList = res.data.datas;
+                        if (res.data.datas && res.data.datas.length > 0) {
+                            if (this.pageIndex == 1) {
+                                this.chatList = res.data.datas;
+                            } else {
+                                this.chatList = this.chatList.concat(res.data.datas);
+                            }
+                            if (res.data.datas.length % 10 != 0) {
+                                this.finished = true;
+                            } else {
+                                this.finished = false;
+                            }
+                        } else {
+                            this.finished = true
+                        }
+
+                    })
+                    .then(() => {
+                        this.loading = false;
                     })
             },
 
@@ -100,7 +116,21 @@
              */
             onLoad() {
                 this.pageIndex++;
+                if (this.courseId != "") {
+                    this.getWeChatHistory(this.courseId, this.pageIndex)
+                }
             },
+
+
+            changeTab() {
+                this.courseId = this.wechatTab[this.tabActive].id;
+                this.pageIndex = 1;
+                this.finished = false;
+                this.loading = false;
+                this.getWeChatHistory()
+
+            }
+
 
         }
 
