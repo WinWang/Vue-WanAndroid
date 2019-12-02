@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import './utils/rem.js'
+import api from './utils/api'
 import {Toast, Dialog} from 'vant'
 
 axios.defaults.baseURL = '/api'  //关键代码
@@ -12,6 +13,7 @@ Vue.use(Toast).use(Dialog)
 Vue.prototype.$toast = Toast;
 Vue.prototype.$dialog = Dialog;
 Vue.prototype.$http = axios;
+Vue.prototype.$api = api;
 
 new Vue({
     router,

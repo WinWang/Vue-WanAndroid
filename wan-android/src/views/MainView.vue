@@ -2,11 +2,15 @@
     <div>
         <div class="bg-back">
             <div class="viewpager">
-                <HomeComp v-show="tabIndex==1"></HomeComp>
-                <SystemComp v-show="tabIndex==2"></SystemComp>
-                <WeChatComp v-show="tabIndex==3"></WeChatComp>
-                <ProjectComp v-show="tabIndex==4"></ProjectComp>
-                <MineComp v-show="tabIndex==5"></MineComp>
+                <!--重构成router的形式-->
+                <!--<HomeComp v-show="tabIndex==1"></HomeComp>-->
+                <!--<SystemComp v-show="tabIndex==2"></SystemComp>-->
+                <!--<WeChatComp v-show="tabIndex==3"></WeChatComp>-->
+                <!--<ProjectComp v-show="tabIndex==4"></ProjectComp>-->
+                <!--<MineComp v-show="tabIndex==5"></MineComp>-->
+                <keep-alive>
+                    <router-view/>
+                </keep-alive>
             </div>
             <bottom-tab class="bottom-bar"></bottom-tab>
         </div>
@@ -15,24 +19,23 @@
 </template>
 
 <script>
-    import {Button} from 'vant';
     import BottomTab from '../components/BottomTab'
-    import HomeComp from '../components/HomeComp';
-    import SystemComp from '../components/SystemComp'
-    import WeChatComp from '../components/WeChatComp'
-    import ProjectComp from '../components/ProjectComp'
-    import MineComp from '../components/MineComp'
+    // import HomeComp from '../components/HomeComp';
+    // import SystemComp from '../components/SystemComp'
+    // import WeChatComp from '../components/WeChatComp'
+    // import ProjectComp from '../components/ProjectComp'
+    // import MineComp from '../components/MineComp'
 
     export default {
         name: 'mainview',
         components: {
             BottomTab,
-            HomeComp,
-            SystemComp,
-            WeChatComp,
-            ProjectComp,
-            MineComp,
-            [Button.name]: Button,
+            // HomeComp,
+            // SystemComp,
+            // WeChatComp,
+            // ProjectComp,
+            // MineComp,
+
         },
 
         data() {

@@ -1,7 +1,7 @@
 <template>
     <div class="vertical-layout">
         <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333">
-            <van-tab v-for="(tab,index) in wechatTab" :title="tab.name">
+            <van-tab v-for="(tab,index) in wechatTab" :title="tab.name" :key="index">
             </van-tab>
 
             <van-list
@@ -87,9 +87,7 @@
 
 
             getWeChatHistory() {
-                var url = "/wxarticle/" + this.courseId + "/" + this.pageIndex + "/json"
-                // var url = "/wxarticle/list/408/1/json";
-                console.log(">>>>>>" + url);
+                var url = "/wxarticle/list/" + this.courseId + "/" + this.pageIndex + "/json"
                 this.$http.get(url)
                     .then(res => res.data)
                     .then(res => {

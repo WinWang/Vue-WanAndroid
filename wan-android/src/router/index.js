@@ -6,9 +6,40 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
+        path: '/mainview',
         name: 'mainview',
-        component: MainView
+        component: MainView,
+        children: [
+            {
+                name: 'Home',
+                path: '/Home',
+                component: () => import('../components/HomeComp.vue')
+            },
+
+            {
+                name: 'System',
+                path: '/System',
+                component: () => import('../components/SystemComp.vue')
+            },
+
+            {
+                name: 'WeChat',
+                path: '/WeChat',
+                component: () => import('../components/WeChatComp.vue')
+            },
+
+            {
+                name: 'Project',
+                path: '/Project',
+                component: () => import('../components/ProjectComp.vue')
+            },
+            {
+                name: 'Mine',
+                path: '/Mine',
+                component: () => import('../components/MineComp.vue')
+            }
+
+        ]
     },
     {
         path: '/about',

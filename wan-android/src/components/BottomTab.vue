@@ -1,5 +1,6 @@
 <template>
     <div class="bottom-wrap">
+
         <div class="tab-item-wrap" @click="changeTab(1)">
             <img class="bottom-tab-img"
                  :src="tabIndex==1?imgList[1]:imgList[0]"/>
@@ -78,25 +79,34 @@
                     this.tabIndex = index;
                     this.$store.dispatch('setHomeTabs', index);
                 }
-
                 switch (index) {
                     case 1:
-
+                        this.$router.push({
+                            path: '/Home'
+                        })
                         break
                     case 2:
-
+                        this.$router.push({
+                            path: '/System'
+                        })
                         break
 
                     case 3:
-
+                        this.$router.push({
+                            path: '/WeChat'
+                        })
                         break
 
                     case 4:
-
+                        this.$router.push({
+                            path: '/Project'
+                        })
                         break
 
                     case 5:
-
+                        this.$router.push({
+                            path: '/Mine'
+                        })
                         break
                 }
             }

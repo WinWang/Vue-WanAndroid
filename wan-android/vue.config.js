@@ -1,5 +1,8 @@
 module.exports = {
     lintOnSave: false,
+    outputDir: process.env.outputDir,
+    assetsDir: './assets',
+    indexPath: 'index.html',
     devServer: {
         proxy: {
             "/api": {
