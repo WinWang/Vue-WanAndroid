@@ -1,6 +1,9 @@
 <template>
     <div id="app">
-        <router-view/>
+        <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
     </div>
 </template>
 
@@ -19,6 +22,10 @@
         width: 100vw;
         display: flex;
         flex-direction: column;
+    }
+
+    .van-nav-bar--fixed .van-nav-bar__title {
+        color: white;
     }
 
 

@@ -2,8 +2,8 @@
     <div class="vertical-layout">
         <template v-for="(item,index) in siteList">
             <div>
-                <van-sticky>
-                    <div class="site-header">{{item.name}}</div>
+                <van-sticky :offset-top="46">
+                    <div class="site-header" >{{item.name}}</div>
                 </van-sticky>
 
                 <div class="site-wrap">

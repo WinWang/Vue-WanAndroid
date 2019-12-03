@@ -1,43 +1,40 @@
 <template>
-    <div>
-        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-            <div class="vertical-layout">
-                <van-swipe :autoplay="3000">
-                    <van-swipe-item v-for="(item, index) in bannerList" :key="index">
-                        <img class="banner-img" v-lazy="item.imagePath"/>
-                    </van-swipe-item>
-                </van-swipe>
-                <van-list
-                        v-model="refreshing"
-                        :finished="finished"
-                        finished-text="没有更多了"
-                        @load="onLoad"
-                >
-                    <div>
-                        <template v-for="(item,index) in homeList">
-                            <div @click="toDetail()">
-                                <van-row type="flex" justify="space-between">
-                                    <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
-                                    <div class="list-data">{{item.niceShareDate}}</div>
-                                </van-row>
-                                <div class="list-title">{{item.title}}</div>
-                                <van-row type="flex" justify="space-between">
-                                    <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
-                                    <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <div class="vertical-layout">
+            <van-swipe :autoplay="3000">
+                <van-swipe-item v-for="(item, index) in bannerList" :key="index">
+                    <img class="banner-img" v-lazy="item.imagePath"/>
+                </van-swipe-item>
+            </van-swipe>
+            <van-list
+                    v-model="refreshing"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+            >
+                <div>
+                    <template v-for="(item,index) in homeList">
+                        <div @click="toDetail()">
+                            <van-row type="flex" justify="space-between">
+                                <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
+                                <div class="list-data">{{item.niceShareDate}}</div>
+                            </van-row>
+                            <div class="list-title">{{item.title}}</div>
+                            <van-row type="flex" justify="space-between">
+                                <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
+                                <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
 
-                                </van-row>
-                                <van-divider></van-divider>
-                            </div>
-                        </template>
-                    </div>
-
-
-                </van-list>
-
-            </div>
-        </van-pull-refresh>
-    </div>
+                            </van-row>
+                            <van-divider></van-divider>
+                        </div>
+                    </template>
+                </div>
+            </van-list>
+        </div>
+    </van-pull-refresh>
 </template>
+
+
 <script>
     import likeNorUrl from '../assets/img/icon-like-nor.png';
     import likeSelUrl from '../assets/img/icon-like-sel.png';
@@ -146,6 +143,12 @@
 
 
 <style scoped>
+
+    .home-bg {
+        width: 100vw;
+        height: calc(100vh - 50px);
+    }
+
     .banner-img {
         width: 100%;
         height: 200px;

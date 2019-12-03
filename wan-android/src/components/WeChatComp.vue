@@ -1,7 +1,7 @@
 <template>
     <div class="vertical-layout">
         <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
-                  swipeable v-model="tabActive" @change="changeTab" :ellipsis=isEllipsis>
+                  swipeable v-model="tabActive" @change="changeTab" :ellipsis=isEllipsis :offset-top="46">
             <van-tab v-for="(tab,index) in wechatTab" :title="tab.name" :key="index">
             </van-tab>
 

@@ -6,37 +6,55 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/mainview',
+        path: '/',
         name: 'mainview',
         component: MainView,
+        meta: {
+            keepAlive: true
+        },
         children: [
             {
                 name: 'Home',
                 path: '/Home',
-                component: () => import('../components/HomeComp.vue')
+                component: () => import('../components/HomeComp.vue'),
+                meta: {
+                    keepAlive: true
+                }
             },
 
             {
                 name: 'System',
                 path: '/System',
-                component: () => import('../components/SystemComp.vue')
+                component: () => import('../components/SystemComp.vue'),
+                meta: {
+                    keepAlive: true
+                }
             },
 
             {
                 name: 'WeChat',
                 path: '/WeChat',
-                component: () => import('../components/WeChatComp.vue')
+                component: () => import('../components/WeChatComp.vue'),
+                meta: {
+                    keepAlive: true
+                }
             },
 
             {
                 name: 'Project',
                 path: '/Project',
-                component: () => import('../components/ProjectComp.vue')
+                component: () => import('../components/ProjectComp.vue'),
+                meta: {
+                    keepAlive: true
+                }
             },
             {
                 name: 'Site',
                 path: '/Site',
-                component: () => import('../components/SiteComp.vue')
+                component: () => import('../components/SiteComp.vue'),
+                meta: {
+                    keepAlive: true
+                }
             }
 
         ]
@@ -48,7 +66,15 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    },
+
+    {
+        path: '/ColletView',
+        name: 'ColletView',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ColletView.vue')
     }
+
+
 ]
 
 const router = new VueRouter({

@@ -43,8 +43,8 @@
     import wtSel from '../assets/img/icon-wt-sel.png';
     import proNor from '../assets/img/icon-pro-nor.png';
     import proSel from '../assets/img/icon-pro-sel.png';
-    import mineNor from '../assets/img/icon-mine-nor.png';
-    import mineSel from '../assets/img/icon-mine-sel.png';
+    import mineNor from '../assets/img/icon-site-nor.png';
+    import mineSel from '../assets/img/icon-site-sel.png';
 
 
     export default {
@@ -68,7 +68,33 @@
         },
 
         mounted() {
+            var path = this.$route.path;
+            switch (path) {
+                case "/Home":
+                    this.tabIndex = 1;
+                    this.$store.dispatch('setHomeTabs', 1);
+                    break
 
+                case "/System":
+                    this.tabIndex = 2;
+                    this.$store.dispatch('setHomeTabs', 2);
+                    break
+
+                case "/WeChat":
+                    this.tabIndex = 3;
+                    this.$store.dispatch('setHomeTabs', 3);
+                    break
+
+                case "/Project":
+                    this.tabIndex = 4;
+                    this.$store.dispatch('setHomeTabs', 4);
+                    break
+
+                case "/Site":
+                    this.tabIndex = 5;
+                    this.$store.dispatch('setHomeTabs', 5);
+                    break
+            }
         },
 
         methods: {
@@ -81,30 +107,30 @@
                 }
                 switch (index) {
                     case 1:
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/Home'
                         })
                         break
                     case 2:
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/System'
                         })
                         break
 
                     case 3:
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/WeChat'
                         })
                         break
 
                     case 4:
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/Project'
                         })
                         break
 
                     case 5:
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/Site'
                         })
                         break
