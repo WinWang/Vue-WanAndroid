@@ -51,6 +51,20 @@ function getSite() {
 }
 
 
+/**
+ * 获取项目分类
+ */
+function getProjectType() {
+    return get("/project/tree/json", {})
+}
+
+/**
+ * 获取项目列表
+ */
+function getProjectList(id, index) {
+    return get(" /project/list/" + index + "/json?cid=" + id, {})
+}
+
 export default {
     getBanner,
     getHomeList,
@@ -58,4 +72,6 @@ export default {
     getWeChatTab,
     getChatHistory,
     getSite,
+    getProjectType,
+    getProjectList,
 }

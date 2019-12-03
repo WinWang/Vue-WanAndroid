@@ -20,7 +20,7 @@
                 :style="{ width: '70%' ,height:'100%',background:'#DFDFDF'}"
         >
             <div class="drawer-wrap">
-                <div class="top-wrap">
+                <div class="top-wrap" @click="doLogin">
                     <img class="avator-style" src="../assets/img/avator.jpg"/>
                     <div class="user-name">登录/注册</div>
                 </div>
@@ -93,6 +93,13 @@
             toCollect() {
                 this.$router.push({
                     path: "/ColletView"
+                })
+            },
+
+
+            doLogin() {
+                this.$router.push({
+                    path: "/RegisterView"
                 })
             }
 

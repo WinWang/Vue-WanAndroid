@@ -9,6 +9,7 @@
     "serve-pro": "vue-cli-service serve --mode production"
   },
   "dependencies": {
+    "better-scroll": "^1.15.2",
     "core-js": "^3.4.3",
     "postcss-pxtorem": "^4.0.1",
     "vant": "^2.2.15",
