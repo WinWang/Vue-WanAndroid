@@ -1,6 +1,5 @@
 <template>
     <div class="vertical-layout">
-
         <div class="login-back">
             <div class="input-wrap">
                 <img class="icon-use-pass" src="../assets/img/icon_user.png"/>
@@ -12,13 +11,31 @@
                 <input class="input-style" placeholder="请输入你的密码"/>
             </div>
 
+            <div class="input-wrap">
+                <img class="icon-use-pass" src="../assets/img/icon_pass.png"/>
+                <input class="input-style" placeholder="请确认你的密码"/>
+            </div>
+
+            <div class="login-button">
+                注 册
+            </div>
         </div>
+
+        <van-icon name="arrow-left" color="#fff" style="position: absolute;left: 10px;top: 20px" size="20px"
+                  @click="$router.back()"/>
+
     </div>
 </template>
 
 <script>
+
+    import {Icon} from 'vant'
+
     export default {
-        name: "RegisterView"
+        name: "RegisterView",
+        components: {
+            [Icon.name]: Icon
+        },
     }
 </script>
 
@@ -60,7 +77,18 @@
     }
 
 
-    input::-webkit-input-placeholder{
+    .login-button {
+        margin-top: 40px;
+        width: 280px;
+        height: 50px;
+        border-radius: 25px;
+        background: white;
+        font-size: 23px;
+        color: #d44daa;
+        line-height: 50px;
+    }
+
+    input::-webkit-input-placeholder {
         color: #eae9e5;
     }
 

@@ -32,8 +32,6 @@
                 </van-cell-group>
 
             </div>
-
-
         </van-popup>
     </div>
 </template>
@@ -99,7 +97,7 @@
 
             doLogin() {
                 this.$router.push({
-                    path: "/RegisterView"
+                    path: "/LoginView"
                 })
             }
 

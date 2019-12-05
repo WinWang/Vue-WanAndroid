@@ -62,8 +62,17 @@ function getProjectType() {
  * 获取项目列表
  */
 function getProjectList(id, index) {
-    return get(" /project/list/" + index + "/json?cid=" + id, {})
+    return get("/project/list/" + index + "/json?cid=" + id, {})
 }
+
+/**
+ * 登录接口
+ * @param params
+ */
+function login(params) {
+    return post("/user/login", params)
+}
+
 
 export default {
     getBanner,
@@ -74,4 +83,5 @@ export default {
     getSite,
     getProjectType,
     getProjectList,
+    login,
 }

@@ -3,7 +3,7 @@
         <div class="vertical-layout">
             <van-swipe :autoplay="3000">
                 <van-swipe-item v-for="(item, index) in bannerList" :key="index">
-                    <img class="banner-img" v-lazy="item.imagePath"/>
+                    <van-image :src="item.imagePath" height="190" width="100%" lazy-load/>
                 </van-swipe-item>
             </van-swipe>
             <van-list
@@ -23,7 +23,6 @@
                             <van-row type="flex" justify="space-between">
                                 <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
                                 <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
-
                             </van-row>
                             <van-divider></van-divider>
                         </div>
@@ -38,7 +37,7 @@
 <script>
     import likeNorUrl from '../assets/img/icon-like-nor.png';
     import likeSelUrl from '../assets/img/icon-like-sel.png';
-    import {Swipe, SwipeItem, Lazyload, List, PullRefresh, Row, Col, Divider} from 'vant';
+    import {Swipe, SwipeItem, Lazyload, List, PullRefresh, Row, Col, Divider, Image} from 'vant';
     import Vue from 'vue';
 
     Vue.use(Lazyload)
@@ -52,6 +51,7 @@
             [Row.name]: Row,
             [Col.name]: Col,
             [Divider.name]: Divider,
+            [Image.name]: Image
         },
 
         data() {
@@ -149,10 +149,6 @@
         height: calc(100vh - 50px);
     }
 
-    .banner-img {
-        width: 100%;
-        height: 200px;
-    }
 
     .list-name {
         font-size: 14px;
