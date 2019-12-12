@@ -1,7 +1,8 @@
 import axios from 'axios';
 import QS from 'qs';
 import {Toast} from 'vant';
-import store from '../store/index'
+import router from '../router/index'
+// import store from '../store/index'
 
 // 环境的切换
 // if (process.env.NODE_ENV == 'development') {
@@ -39,6 +40,11 @@ axios.interceptors.response.use(
         if (response.status === 200) {
             if (response.data.errorCode != 0) {
                 Toast.fail(response.data.errorMsg)
+                // if(response.data.errorCode===-1001){ //登录拦截处理
+                //     router.push({
+                //         path:'/LoginView'
+                //     })
+                // }
             }
             return Promise.resolve(response);
         } else {
