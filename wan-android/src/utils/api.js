@@ -73,6 +73,14 @@ function login(params) {
     return post("/user/login", params)
 }
 
+/**
+ * 获取收藏列表
+ * @param params
+ */
+function getCollectList(params) {
+    return get("/lg/collect/list/" + params + "/json", {})
+}
+
 
 export default {
     getBanner,
@@ -84,4 +92,5 @@ export default {
     getProjectType,
     getProjectList,
     login,
+    getCollectList
 }

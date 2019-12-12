@@ -44,7 +44,6 @@
 
         },
 
-
         methods: {
             doLogin() {
                 if (this.phone == "" || this.password == "") {
@@ -56,7 +55,12 @@
                 params.password = this.password;
                 this.$api.login(params)
                     .then(res => {
+                        if (res.errorCode === 0) {
+                            this.$toast.success("登录成功")
+                            console.log("<><><>"+res.data.username)
+                            this.$store.commit('setUserName', res.data.username);
 
+                        }
                     })
             }
         }

@@ -18,15 +18,23 @@
         },
 
         data() {
-            return {}
+            return {
+                pageIndex: 0,
+            }
         },
-
 
         mounted() {
-
+            this.getCollectData()
         },
 
-        methods: {}
+        methods: {
+            getCollectData() {
+                this.$api.getCollectList(this.pageIndex)
+                    .then(res => {
+
+                    })
+            },
+        }
 
 
     }
