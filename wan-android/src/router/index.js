@@ -74,6 +74,9 @@ const routes = [
         path: '/ColletView',
         name: 'ColletView',
         component: () => import( '../views/ColletView.vue'),
+        meta:{
+            auth:true
+        }
     },
 
 
