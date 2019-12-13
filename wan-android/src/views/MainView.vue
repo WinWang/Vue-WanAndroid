@@ -60,6 +60,14 @@
             }
         },
 
+        created() {
+            var userName = this.$utils.getCookie("loginUserName");
+            if (userName != "" && userName != undefined) {
+                this.$store.commit('setUserName', userName)
+            }
+        },
+
+
         mounted() {
             // this.$nextTick(() => { //确保UI渲染完成
             //     let wrapper = document.querySelector('.viewpager')
@@ -109,17 +117,14 @@
                 return this.$store.getters.getHomeTab;
             },
 
-            getUserName(){
-                console.log(">>>>>>>>>>>>>>>")
+            getUserName() {
                 return this.$store.getters.getUserName
             }
 
         },
 
 
-        watch: {
-
-        }
+        watch: {}
 
 
     }

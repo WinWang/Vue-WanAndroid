@@ -7,6 +7,7 @@ export default new Vuex.Store({
     state: {
         selectHomeTab: 1,
         userName: '',
+        isLogin: false,
 
     },
 
@@ -30,6 +31,9 @@ export default new Vuex.Store({
 
         setUserName(state, userName) {
             state.userName = userName;
+            if (userName != '' && userName != undefined && userName != null) {
+                state.isLogin = true;
+            }
         }
 
 
