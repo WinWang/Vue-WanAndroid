@@ -27,6 +27,7 @@
 <script>
 
     import {Icon} from 'vant'
+    import Bus from '../utils/eventBus'
 
     export default {
         name: "LoginView",
@@ -57,9 +58,9 @@
                     .then(res => {
                         if (res.errorCode === 0) {
                             this.$toast.success("登录成功")
-                            console.log("<><><>"+res.data.username)
                             this.$store.commit('setUserName', res.data.username);
-
+                            Bus.$emit('loginEvent', true)
+                            this.$router.back();
                         }
                     })
             }

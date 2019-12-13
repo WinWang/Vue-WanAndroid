@@ -14,7 +14,7 @@
             >
                 <div>
                     <template v-for="(item,index) in homeList">
-                        <div @click="toDetail()">
+                        <div @click="toDetail(item)">
                             <van-row type="flex" justify="space-between">
                                 <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
                                 <div class="list-data">{{item.niceShareDate}}</div>
@@ -22,7 +22,8 @@
                             <div class="list-title">{{item.title}}</div>
                             <van-row type="flex" justify="space-between">
                                 <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
-                                <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
+                                <img class="list-icon" :src="item.collect?likeSel:likeNor"
+                                     @click.stop="addMyFavi(item,index)"/>
                             </van-row>
                             <van-divider></van-divider>
                         </div>
@@ -39,6 +40,7 @@
     import likeSelUrl from '../assets/img/icon-like-sel.png';
     import {Swipe, SwipeItem, Lazyload, List, PullRefresh, Row, Col, Divider, Image} from 'vant';
     import Vue from 'vue';
+    import Bus from '../utils/eventBus'
 
     Vue.use(Lazyload)
     export default {
@@ -66,6 +68,13 @@
                 likeSel: likeSelUrl,
             }
         },
+
+        created() {
+            Bus.$on('loginEvent', (tag) => {
+                this.onRefresh();
+            })
+        },
+
 
         mounted() {
             this.getBanner();
@@ -128,13 +137,37 @@
                 this.getHomeList()
             },
 
-            toDetail() {
+            toDetail(item) {
                 this.$router.push({
-                    path: "/about"
+                    path: "/webview",
+                    query: {
+                        title: item.title,
+                        linkUrl: item.link
+                    }
                 })
-            }
+            },
 
 
+            addMyFavi(item, index) {
+                if (item.collect) {
+                    this.$toast("您已经添加收藏了！！！")
+                    return
+                }
+                this.$api.addFavirate(item.id)
+                    .then(res => {
+                        if (res.errorCode == 0) {
+                            this.$toast.success("收藏成功")
+                            this.homeList[index].collect = true;
+                        }
+                    })
+            },
+
+
+        },
+
+
+        destroyed() {
+            Bus.$off('loginEvent')
         }
 
 
@@ -148,7 +181,6 @@
         width: 100vw;
         height: calc(100vh - 50px);
     }
-
 
     .list-name {
         font-size: 14px;

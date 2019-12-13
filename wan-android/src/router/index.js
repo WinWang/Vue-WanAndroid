@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import MainView from '../views/MainView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import WebView from '../views/webview';
 
 Vue.use(VueRouter)
 
@@ -74,8 +75,8 @@ const routes = [
         path: '/ColletView',
         name: 'ColletView',
         component: () => import( '../views/ColletView.vue'),
-        meta:{
-            auth:true
+        meta: {
+            auth: true
         }
     },
 
@@ -96,8 +97,14 @@ const routes = [
         meta: {
             keepAlive: false
         },
-    }
+    },
 
+
+    {
+        path: '/webview',
+        name: 'webview',
+        component: WebView,
+    }
 
 
 ]

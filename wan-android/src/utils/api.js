@@ -82,6 +82,15 @@ function getCollectList(params) {
 }
 
 
+/**
+ * 收藏站内文章
+ * @param params
+ */
+function addFavirate(params) {
+    return post('/lg/collect/' + params + '/json', {})
+}
+
+
 export default {
     getBanner,
     getHomeList,
@@ -92,5 +101,6 @@ export default {
     getProjectType,
     getProjectList,
     login,
-    getCollectList
+    getCollectList,
+    addFavirate
 }

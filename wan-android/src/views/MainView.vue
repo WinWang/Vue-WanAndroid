@@ -104,9 +104,13 @@
 
 
             doLogin() {
-                this.$router.push({
-                    path: "/LoginView"
-                })
+                if (!this.$store.getters.getLoginState) {
+                    this.$router.push({
+                        path: "/LoginView"
+                    })
+                }else{
+                    this.$toast.fail("您已经登录了")
+                }
             }
 
 
