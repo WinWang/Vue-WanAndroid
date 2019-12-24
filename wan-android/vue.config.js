@@ -3,6 +3,7 @@ module.exports = {
     outputDir: process.env.outputDir,
     assetsDir: './assets',
     indexPath: 'index.html',
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/test/wan-android/',
     devServer: {
         proxy: {
             "/api": {

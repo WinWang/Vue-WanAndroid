@@ -1,13 +1,12 @@
 import {get, post} from './http'
 
 let baseUrl = process.env.VUE_APP_BASE_URL;
-let sotckUrl = process.env.VUE_APP_STOCK_WEB;
 
 /**
  * 获取Banner接口
  */
 function getBanner() {
-    return get("/banner/json", {});
+    return get(baseUrl + "/banner/json", {});
 }
 
 
@@ -16,21 +15,21 @@ function getBanner() {
  * @param index
  */
 function getHomeList(index) {
-    return get("/article/list/" + index + "/json", {});
+    return get(baseUrl + "/article/list/" + index + "/json", {});
 }
 
 /**
  * 获取系统架构数据
  */
 function getSystem() {
-    return get("/tree/json", {});
+    return get(baseUrl + "/tree/json", {});
 }
 
 /**
  * 获取微信公众号Tab数据
  */
 function getWeChatTab() {
-    return get("/wxarticle/chapters/json", {});
+    return get(baseUrl + "/wxarticle/chapters/json", {});
 }
 
 
@@ -40,14 +39,14 @@ function getWeChatTab() {
  * @param index
  */
 function getChatHistory(id, index) {
-    return get("/wxarticle/list/" + id + "/" + index + "/json", {})
+    return get(baseUrl + "/wxarticle/list/" + id + "/" + index + "/json", {})
 }
 
 /**
  * 获取导航数据
  */
 function getSite() {
-    return get("/navi/json", {});
+    return get(baseUrl + "/navi/json", {});
 }
 
 
@@ -55,14 +54,14 @@ function getSite() {
  * 获取项目分类
  */
 function getProjectType() {
-    return get("/project/tree/json", {})
+    return get(baseUrl + "/project/tree/json", {})
 }
 
 /**
  * 获取项目列表
  */
 function getProjectList(id, index) {
-    return get("/project/list/" + index + "/json?cid=" + id, {})
+    return get(baseUrl + "/project/list/" + index + "/json?cid=" + id, {})
 }
 
 /**
@@ -70,7 +69,7 @@ function getProjectList(id, index) {
  * @param params
  */
 function login(params) {
-    return post("/user/login", params)
+    return post(baseUrl + "/user/login", params)
 }
 
 /**
@@ -78,7 +77,7 @@ function login(params) {
  * @param params
  */
 function getCollectList(params) {
-    return get("/lg/collect/list/" + params + "/json", {})
+    return get(baseUrl + "/lg/collect/list/" + params + "/json", {})
 }
 
 
@@ -87,7 +86,7 @@ function getCollectList(params) {
  * @param params
  */
 function addFavirate(params) {
-    return post('/lg/collect/' + params + '/json', {})
+    return post(baseUrl + '/lg/collect/' + params + '/json', {})
 }
 
 

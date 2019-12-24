@@ -16,7 +16,6 @@
                 get-container="#app"
                 v-model="showPop"
                 position="left"
-                ba
                 :style="{ width: '70%' ,height:'100%',background:'#DFDFDF'}"
         >
             <div class="drawer-wrap">
