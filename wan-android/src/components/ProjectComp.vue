@@ -1,40 +1,43 @@
 <template>
-    <div class="vertical-layout">
-        <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
-                  swipeable v-model="tabActive" @change="changeTab" :offset-top="45">
-            <van-tab v-for="(tab,index) in projectTList" :title="tab.name" :key="index">
-            </van-tab>
+    <div class="home-bg">
+        <div class="vertical-layout">
+            <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
+                      swipeable v-model="tabActive" @change="changeTab" :offset-top="45">
+                <van-tab v-for="(tab,index) in projectTList" :title="tab.name" :key="index">
+                </van-tab>
 
-            <van-list
-                    v-model="loading"
-                    :finished="finished"
-                    finished-text="没有更多了"
-                    @load="onLoad"
-            >
-                <div>
-                    <template v-for="(item,index) in PList">
-                        <div>
-                            <div style="height: 20px" v-if="index==0"></div>
-                            <div style="display: flex;flex-direction: row; justify-content: center">
-                                <van-image :src="item.envelopePic" height="120" width="60" lazy-load
-                                           @click="previewImg(item.envelopePic)"/>
-                                <div style="display: flex;flex-direction: column;width: 280px;margin-left: 10px">
-                                    <div class="p-title">{{item.title}}</div>
-                                    <div class="p-desc">{{item.desc}}</div>
-                                    <van-row type="flex" justify="space-between" style="margin-top: 10px">
-                                        <div class="list-type">{{item.shareUser==""?item.author:item.shareUser}}</div>
-                                        <div class="list-data">{{item.niceDate}}</div>
-                                    </van-row>
-                                    <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
+                <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        finished-text="没有更多了"
+                        @load="onLoad"
+                >
+                    <div>
+                        <template v-for="(item,index) in PList">
+                            <div>
+                                <div style="height: 20px" v-if="index==0"></div>
+                                <div style="display: flex;flex-direction: row; justify-content: center">
+                                    <van-image :src="item.envelopePic" height="120" width="60" lazy-load
+                                               @click="previewImg(item.envelopePic)"/>
+                                    <div style="display: flex;flex-direction: column;width: 280px;margin-left: 10px">
+                                        <div class="p-title">{{item.title}}</div>
+                                        <div class="p-desc">{{item.desc}}</div>
+                                        <van-row type="flex" justify="space-between" style="margin-top: 10px">
+                                            <div class="list-type">{{item.shareUser==""?item.author:item.shareUser}}
+                                            </div>
+                                            <div class="list-data">{{item.niceDate}}</div>
+                                        </van-row>
+                                        <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
+                                    </div>
                                 </div>
+                                <van-divider></van-divider>
                             </div>
-                            <van-divider></van-divider>
-                        </div>
-                    </template>
-                </div>
-            </van-list>
-        </van-tabs>
+                        </template>
+                    </div>
+                </van-list>
+            </van-tabs>
 
+        </div>
     </div>
 </template>
 
@@ -140,6 +143,7 @@
 </script>
 
 <style scoped>
+
 
     .p-title {
         font-size: 15px;

@@ -1,26 +1,27 @@
 <template>
-    <div class="vertiacl-layout">
-        <template v-for="(item,index) in dataList">
-            <div>
-                <div style="height: 15px" v-if="index==0"></div>
-                <van-row type="flex" justify="space-between" align="center">
-                    <van-col span="22">
-                        <div class="tree-title">{{item.name}}</div>
-                        <div class="tree-child-wrap">
-                            <template v-for="(child,index) in item.children">
-                                <div class="txt-child">{{child.name}}</div>
-                            </template>
-                        </div>
+    <div class="home-bg">
+        <div class="vertiacl-layout">
+            <template v-for="(item,index) in dataList">
+                <div>
+                    <div style="height: 15px" v-if="index==0"></div>
+                    <van-row type="flex" justify="space-between" align="center">
+                        <van-col span="22">
+                            <div class="tree-title">{{item.name}}</div>
+                            <div class="tree-child-wrap">
+                                <template v-for="(child,index) in item.children">
+                                    <div class="txt-child">{{child.name}}</div>
+                                </template>
+                            </div>
 
-                    </van-col>
-                    <img class="img-arrow" src="../assets/img/iocn-arrow.png"/>
-                </van-row>
+                        </van-col>
+                        <img class="img-arrow" src="../assets/img/iocn-arrow.png"/>
+                    </van-row>
 
-                <van-divider></van-divider>
-            </div>
-        </template>
+                    <van-divider></van-divider>
+                </div>
+            </template>
+        </div>
     </div>
-
 </template>
 
 <script>

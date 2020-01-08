@@ -24,6 +24,12 @@
         flex-direction: column;
     }
 
+    .home-bg {
+        width: 100vw;
+        height: calc(100vh - 50px);
+        overflow: auto;
+    }
+
     .van-nav-bar--fixed .van-nav-bar__title {
         color: white;
     }

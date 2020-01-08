@@ -8,7 +8,7 @@ export default new Vuex.Store({
         selectHomeTab: 1,
         userName: '',
         isLogin: false,
-
+        toolBarHeight: 0, //title栏高度
     },
 
 
@@ -23,6 +23,10 @@ export default new Vuex.Store({
 
         getLoginState(state) {
             return state.isLogin
+        },
+
+        getTitleBarHeight(state) {
+            return state.toolBarHeight;
         }
 
     },
@@ -38,6 +42,10 @@ export default new Vuex.Store({
             if (userName != '' && userName != undefined && userName != null) {
                 state.isLogin = true;
             }
+        },
+
+        setToolBarHeight(state, toolBarHeight) {
+            state.toolBarHeight = toolBarHeight;
         }
 
 
@@ -49,6 +57,10 @@ export default new Vuex.Store({
 
         setUserNameAsyn({commit, state}, userName) {
             commit('setUserName', userName)
+        },
+
+        setToolBarHeight({commit, state}, toolBarHeight) {
+            commit('setToolBarHeight', toolBarHeight)
         }
 
 

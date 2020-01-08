@@ -1,38 +1,40 @@
 <template>
-    <div class="vertical-layout">
-        <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
-                  swipeable v-model="tabActive" @change="changeTab" :ellipsis=isEllipsis :offset-top="45">
-            <van-tab v-for="(tab,index) in wechatTab" :title="tab.name" :key="index">
-            </van-tab>
+    <div class="home-bg">
+        <div class="vertical-layout">
+            <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
+                      swipeable v-model="tabActive" @change="changeTab" :ellipsis=isEllipsis :offset-top="45">
+                <van-tab v-for="(tab,index) in wechatTab" :title="tab.name" :key="index">
+                </van-tab>
 
-            <van-list
-                    v-model="loading"
-                    :finished="finished"
-                    finished-text="没有更多了"
-                    @load="onLoad"
-            >
-                <div>
-                    <template v-for="(item,index) in chatList">
-                        <div>
-                            <div style="height: 20px" v-if="index==0"></div>
-                            <van-row type="flex" justify="space-between">
-                                <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
-                                <div class="list-data">{{item.niceShareDate}}</div>
-                            </van-row>
-                            <div class="list-title">{{item.title}}</div>
-                            <van-row type="flex" justify="space-between">
-                                <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
-                                <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
+                <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        finished-text="没有更多了"
+                        @load="onLoad"
+                >
+                    <div>
+                        <template v-for="(item,index) in chatList">
+                            <div>
+                                <div style="height: 20px" v-if="index==0"></div>
+                                <van-row type="flex" justify="space-between">
+                                    <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
+                                    <div class="list-data">{{item.niceShareDate}}</div>
+                                </van-row>
+                                <div class="list-title">{{item.title}}</div>
+                                <van-row type="flex" justify="space-between">
+                                    <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
+                                    <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
 
-                            </van-row>
-                            <van-divider></van-divider>
-                        </div>
-                    </template>
-                </div>
-            </van-list>
-        </van-tabs>
-
+                                </van-row>
+                                <van-divider></van-divider>
+                            </div>
+                        </template>
+                    </div>
+                </van-list>
+            </van-tabs>
+        </div>
     </div>
+
 </template>
 <script>
     import likeNorUrl from '../assets/img/icon-like-nor.png';

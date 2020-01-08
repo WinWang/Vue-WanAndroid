@@ -1,25 +1,26 @@
 <template>
-    <div class="vertical-layout">
-        <template v-for="(item,index) in siteList">
-            <div>
-                <van-sticky :offset-top="46">
-                    <div class="site-header" >{{item.name}}</div>
-                </van-sticky>
+    <div class="home-bg">
+        <div class="vertical-layout">
+            <template v-for="(item,index) in siteList">
+                <div>
+                    <van-sticky :offset-top="toolHeight">
+                        <div class="site-header">{{item.name}}</div>
+                    </van-sticky>
 
-                <div class="site-wrap">
-                    <template v-for="(itemIn,ind) in item.articles">
-                        <!--<van-tag round :type="setButtonStyle(ind)" size="large" style="margin: 10px 5px">-->
-                        <!--{{itemIn.title}}-->
-                        <!--</van-tag>-->
-                        <div :class="['tab-style',{'color-1':ind%1==0,'color-2':ind%2==0,'color-3':ind%3==0,'color-4':ind%4==0,'color-5':ind%5==0,'color-6':ind%6==0,'color-7':ind%7==0,'color-8':ind%8==0,'color-9':ind%9==0,'color-9':ind%0==0}]">
-                            {{itemIn.title}}
-                        </div>
-                    </template>
+                    <div class="site-wrap">
+                        <template v-for="(itemIn,ind) in item.articles">
+                            <!--<van-tag round :type="setButtonStyle(ind)" size="large" style="margin: 10px 5px">-->
+                            <!--{{itemIn.title}}-->
+                            <!--</van-tag>-->
+                            <div :class="['tab-style',{'color-1':ind%1==0,'color-2':ind%2==0,'color-3':ind%3==0,'color-4':ind%4==0,'color-5':ind%5==0,'color-6':ind%6==0,'color-7':ind%7==0,'color-8':ind%8==0,'color-9':ind%9==0,'color-9':ind%0==0}]">
+                                {{itemIn.title}}
+                            </div>
+                        </template>
+                    </div>
+
                 </div>
-
-            </div>
-        </template>
-
+            </template>
+        </div>
     </div>
 </template>
 
@@ -37,11 +38,14 @@
         data() {
             return {
                 siteList: [],
+                toolHeight: 0,
             }
         },
 
 
         mounted() {
+            // this.toolHeight = this.$store.getters.getTitleBarHeight;
+            this.toolHeight = this.$parent.$refs.toolBar.clientHeight;
             this.getSiteData();
         },
 
@@ -130,11 +134,9 @@
         background: #ea986c;
     }
 
-
     .color-0 {
         background: #adabea;
     }
-
 
 
 </style>

@@ -2,7 +2,7 @@
     <div>
         <div class="bg-back">
             <van-nav-bar :title="tabChangeListener()" fixed style="background: #d44daa; color: white;"
-                         @click-left="openDrawer()">
+                         @click-left="openDrawer()" ref="toolBar">
                 <van-icon name="wap-nav" slot="left" color="white"/>
             </van-nav-bar>
             <div class="viewpager">
@@ -69,8 +69,9 @@
 
         mounted() {
             // this.$nextTick(() => { //确保UI渲染完成
-            //     let wrapper = document.querySelector('.viewpager')
-            //     let scroll = new BScroll(wrapper)
+            //     // let wrapper = document.querySelector('.viewpager')
+            //     // let scroll = new BScroll(wrapper)
+            //     this.$store.dispatch("setToolBarHeight", this.$refs.toolBar.clientHeight)
             // })
         },
 
@@ -107,7 +108,7 @@
                     this.$router.push({
                         path: "/LoginView"
                     })
-                }else{
+                } else {
                     this.$toast.fail("您已经登录了")
                 }
             }
