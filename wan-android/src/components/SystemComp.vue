@@ -21,12 +21,13 @@
                 </div>
             </template>
         </div>
+        <van-loading color="#1989fa" v-if="loading" class="loading-data"/>
     </div>
 </template>
 
 <script>
 
-    import {Row, Col, Divider} from 'vant'
+    import {Row, Col, Divider, Loading} from 'vant'
 
     export default {
         name: "SystemComp",
@@ -34,11 +35,13 @@
             [Row.name]: Row,
             [Col.name]: Col,
             [Divider.name]: Divider,
+            [Loading.name]: Loading,
         },
 
         data() {
             return {
-                dataList: []
+                dataList: [],
+                loading: true,
             }
         },
 
@@ -54,6 +57,9 @@
                 this.$api.getSystem()
                     .then(res => {
                         this.dataList = res.data;
+                    })
+                    .then(() => {
+                        this.loading = false;
                     })
             }
         },

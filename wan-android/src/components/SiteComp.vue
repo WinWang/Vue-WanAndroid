@@ -21,11 +21,12 @@
                 </div>
             </template>
         </div>
+        <van-loading color="#1989fa" v-if="loading" class="loading-data"/>
     </div>
 </template>
 
 <script>
-    import {Sticky, Divider, Tag} from 'vant';
+    import {Sticky, Divider, Tag, Loading} from 'vant';
 
     export default {
         name: "SiteComp",
@@ -33,12 +34,14 @@
             [Sticky.name]: Sticky,
             [Divider.name]: Divider,
             [Tag.name]: Tag,
+            [Loading.name]: Loading,
         },
 
         data() {
             return {
                 siteList: [],
                 toolHeight: 0,
+                loading: true,
             }
         },
 
@@ -55,6 +58,9 @@
                 this.$api.getSite()
                     .then(res => {
                         this.siteList = res.data;
+                    })
+                    .then(() => {
+                        this.loading = false;
                     })
             },
 

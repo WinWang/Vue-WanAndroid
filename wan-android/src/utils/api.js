@@ -1,6 +1,7 @@
 import {get, post} from './http'
 
 let baseUrl = process.env.VUE_APP_BASE_URL;
+let baseUrlPost = process.env.VUE_APP_BASE_URL_POST;
 
 /**
  * 获取Banner接口
@@ -69,7 +70,7 @@ function getProjectList(id, index) {
  * @param params
  */
 function login(params) {
-    return post(baseUrl + "/user/login", params)
+    return post(baseUrlPost, params)
 }
 
 /**
@@ -86,7 +87,7 @@ function getCollectList(params) {
  * @param params
  */
 function addFavirate(params) {
-    return post(baseUrl + '/lg/collect/' + params + '/json', {})
+    return post(baseUrlPost + '/lg/collect/' + params + '/json', {})
 }
 
 

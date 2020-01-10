@@ -33,6 +33,9 @@
                 </van-list>
             </div>
         </van-pull-refresh>
+
+        <van-loading color="#1989fa" v-if="loading" class="loading-data"/>
+
     </div>
 </template>
 
@@ -40,7 +43,7 @@
 <script>
     import likeNorUrl from '../assets/img/icon-like-nor.png';
     import likeSelUrl from '../assets/img/icon-like-sel.png';
-    import {Swipe, SwipeItem, Lazyload, List, PullRefresh, Row, Col, Divider, Image} from 'vant';
+    import {Swipe, SwipeItem, Lazyload, List, PullRefresh, Row, Col, Divider, Image, Loading} from 'vant';
     import Vue from 'vue';
     import Bus from '../utils/eventBus'
 
@@ -55,7 +58,8 @@
             [Row.name]: Row,
             [Col.name]: Col,
             [Divider.name]: Divider,
-            [Image.name]: Image
+            [Image.name]: Image,
+            [Loading.name]: Loading,
         },
 
         data() {
@@ -68,6 +72,7 @@
                 finished: false,
                 likeNor: likeNorUrl,
                 likeSel: likeSelUrl,
+                loading: true,
             }
         },
 
@@ -93,6 +98,7 @@
                         this.bannerList = res.data;
                     })
                     .then(() => {
+                        this.loading = false;
                         this.refreshing = false;
                     })
 
@@ -117,6 +123,7 @@
                     })
                     .then(() => {
                         this.refreshing = false;
+                        this.loading = false;
                     })
             },
 

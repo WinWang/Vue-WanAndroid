@@ -54,6 +54,7 @@
                 var params = {};
                 params.username = this.phone;
                 params.password = this.password;
+                params.path = "https://www.wanandroid.com/user/login"
                 this.$api.login(params)
                     .then(res => {
                         if (res.errorCode === 0) {

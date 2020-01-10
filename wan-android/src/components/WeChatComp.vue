@@ -33,6 +33,7 @@
                 </van-list>
             </van-tabs>
         </div>
+        <van-loading color="#1989fa" v-if="loadingData" class="loading-data"/>
     </div>
 
 </template>
@@ -40,7 +41,7 @@
     import likeNorUrl from '../assets/img/icon-like-nor.png';
     import likeSelUrl from '../assets/img/icon-like-sel.png';
 
-    import {Tab, Tabs, List, Row, Col, Divider} from 'vant';
+    import {Tab, Tabs, List, Row, Col, Divider, Loading} from 'vant';
 
     export default {
         name: "WeChatComp",
@@ -51,6 +52,7 @@
             [Col.name]: Col,
             [Row.name]: Row,
             [Divider.name]: Divider,
+            [Loading.name]: Loading,
         },
 
         data() {
@@ -65,6 +67,7 @@
                 courseId: '', //公众号ID
                 likeNor: likeNorUrl,
                 likeSel: likeSelUrl,
+                loadingData: true,
             }
         },
 
@@ -85,6 +88,10 @@
                         this.courseId = this.wechatTab[0].id;
                         this.pageIndex = 1;
                         this.getWeChatHistory();
+                    })
+                    .then(() => {
+                        this.loading = false;
+                        this.loadingData = false;
                     })
             },
 
@@ -110,6 +117,7 @@
                     })
                     .then(() => {
                         this.loading = false;
+                        this.loadingData = false;
                     })
             },
 

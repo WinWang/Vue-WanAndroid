@@ -2,7 +2,7 @@
     <div class="home-bg">
         <div class="vertical-layout">
             <van-tabs color="#d4237a" line-height="2px" title-active-color="#d4237a" title-inactive-color="#333" sticky
-                      swipeable v-model="tabActive" @change="changeTab" :offset-top="45">
+                      swipeable v-model="tabActive" @change="changeTab" :offset-top="titleHeight">
                 <van-tab v-for="(tab,index) in projectTList" :title="tab.name" :key="index">
                 </van-tab>
 
@@ -71,10 +71,12 @@
                 PList: [],//项目数据
                 likeNor: likeNorUrl,
                 likeSel: likeSelUrl,
+                titleHeight: 45,
             }
         },
 
         mounted() {
+            this.titleHeight = this.$parent.$refs.toolBar.clientHeight;
             this.getTreeList();
         },
 
