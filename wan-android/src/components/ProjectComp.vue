@@ -16,7 +16,8 @@
                         <template v-for="(item,index) in PList">
                             <div>
                                 <div style="height: 20px" v-if="index==0"></div>
-                                <div style="display: flex;flex-direction: row; justify-content: center">
+                                <div style="display: flex;flex-direction: row; justify-content: center"
+                                     @click="itemClick(item)">
                                     <van-image :src="item.envelopePic" height="120" width="60" lazy-load
                                                @click="previewImg(item.envelopePic)"/>
                                     <div style="display: flex;flex-direction: column;width: 280px;margin-left: 10px">
@@ -136,6 +137,10 @@
                 this.id = this.projectTList[this.tabActive].id;
                 this.getePList()
             },
+
+            itemClick(item) {
+                location.href = item.link;
+            }
 
 
         },

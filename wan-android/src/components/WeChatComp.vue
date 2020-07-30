@@ -16,12 +16,12 @@
                         <template v-for="(item,index) in chatList">
                             <div>
                                 <div style="height: 20px" v-if="index==0"></div>
-                                <van-row type="flex" justify="space-between">
+                                <van-row type="flex" justify="space-between" @click="itemClick(item)">
                                     <div class="list-name">{{item.shareUser==""?item.author:item.shareUser}}</div>
                                     <div class="list-data">{{item.niceShareDate}}</div>
                                 </van-row>
-                                <div class="list-title">{{item.title}}</div>
-                                <van-row type="flex" justify="space-between">
+                                <div class="list-title" @click="itemClick(item)">{{item.title}}</div>
+                                <van-row type="flex" justify="space-between" @click="itemClick(item)">
                                     <div class="list-type">{{item.superChapterName}}/{{item.chapterName}}</div>
                                     <img class="list-icon" :src="item.collect?likeSel:likeNor"/>
 
@@ -139,6 +139,10 @@
                 this.loading = false;
                 this.getWeChatHistory()
 
+            },
+
+            itemClick(item) {
+                location.href = item.link;
             }
 
 

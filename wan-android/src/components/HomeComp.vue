@@ -147,13 +147,7 @@
             },
 
             toDetail(item) {
-                this.$router.push({
-                    path: "/webview",
-                    query: {
-                        title: item.title,
-                        linkUrl: item.link
-                    }
-                })
+                location.href = item.link
             },
 
 

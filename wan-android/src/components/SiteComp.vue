@@ -12,7 +12,8 @@
                             <!--<van-tag round :type="setButtonStyle(ind)" size="large" style="margin: 10px 5px">-->
                             <!--{{itemIn.title}}-->
                             <!--</van-tag>-->
-                            <div :class="['tab-style',{'color-1':ind%1==0,'color-2':ind%2==0,'color-3':ind%3==0,'color-4':ind%4==0,'color-5':ind%5==0,'color-6':ind%6==0,'color-7':ind%7==0,'color-8':ind%8==0,'color-9':ind%9==0,'color-9':ind%0==0}]">
+                            <div @click="itemClick(itemIn)"
+                                 :class="['tab-style',{'color-1':ind%1==0,'color-2':ind%2==0,'color-3':ind%3==0,'color-4':ind%4==0,'color-5':ind%5==0,'color-6':ind%6==0,'color-7':ind%7==0,'color-8':ind%8==0,'color-9':ind%9==0,'color-9':ind%0==0}]">
                                 {{itemIn.title}}
                             </div>
                         </template>
@@ -63,6 +64,10 @@
                         this.loading = false;
                     })
             },
+
+            itemClick(item) {
+                location.href = item.link;
+            }
 
         },
 
