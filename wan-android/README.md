@@ -1,6 +1,14 @@
-# wan-android   Vue版本
+# wanAndroid   Vue版本
 
-整个项目基于Vue2+vant2开发，内部演示了组件、vuex、bus、屏幕适配等的使用，适合前端开发用来上手学习，
+整个项目基于Vue2+vant2开发，内部演示了组件、vuex、bus、屏幕适配等的使用，适合前端开发用来上手学习!
+
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/home.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/drawer.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/struct.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/wechat.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/project.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/site.png)
+![](https://github.com/WinWang/VantApp/blob/master/wan-android/screenShot/login.png)
 
 ## Project setup
 ```
