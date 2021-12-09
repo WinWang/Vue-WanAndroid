@@ -1,4 +1,6 @@
-# wan-android
+# wan-android   Vue版本
+
+整个项目基于Vue2+vant2开发，内部演示了组件、vuex、bus、屏幕适配等的使用，适合前端开发用来上手学习，
 
 ## Project setup
 ```
